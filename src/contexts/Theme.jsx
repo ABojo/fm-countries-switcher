@@ -33,6 +33,10 @@ function Theme({ children }) {
       md: 600,
       lg: 800,
     },
+    br: {
+      cards: ".5rem",
+    },
+    shadow: "10px 10px 30px -32px rgba(0, 0, 0, 0.75);",
   };
 
   //copy the selected theme's properties to the activeTheme object
