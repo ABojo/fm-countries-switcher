@@ -1,20 +1,11 @@
-import { useState, useEffect } from "react";
+import { useContext } from "react";
 import { Container } from "./CountryDirectory.styles";
-import countryApi from "../../utils/countryApi";
+import { CountriesContext } from "../../contexts/Countries";
 import CountryCard from "../CountryCard/CountryCard";
 import Spinner from "../Spinner/Spinner";
 
 function CountryDirectory() {
-  const [countries, setCountries] = useState(null);
-
-  async function getCountries() {
-    const countries = await countryApi.getAllCountries();
-    setCountries(countries);
-  }
-
-  useEffect(() => {
-    getCountries();
-  }, []);
+  const { countries } = useContext(CountriesContext);
 
   return (
     <Container>
