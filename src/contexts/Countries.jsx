@@ -18,7 +18,20 @@ export function CountriesProvider({ children }) {
     fetchCountries();
   }, []);
 
-  const value = { countries };
+  function findCountryByName(name) {
+    if (!countries) return null;
+
+    const lowerName = name.toLowerCase();
+
+    return countries.find((country) => {
+      const common = country.name.common.toLowerCase();
+      const official = country.name.official.toLowerCase();
+
+      return common === lowerName || official === lowerName;
+    });
+  }
+
+  const value = { countries, findCountryByName };
 
   return (
     <CountriesContext.Provider value={value}>

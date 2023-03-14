@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { CountriesContext } from "../../contexts/Countries";
 import countryApi from "../../utils/countryApi";
 
 import {
@@ -17,18 +18,10 @@ import CountryDetail from "../CountryDetail/CountryDetail";
 import BorderList from "../BorderList/BorderList";
 
 function CountryPage() {
-  const [country, setCountry] = useState(null);
+  const { findCountryByName } = useContext(CountriesContext);
   const { countryName } = useParams();
 
-  async function getCountryData() {
-    const countryData = await countryApi.getCountry(countryName);
-    console.log(countryData);
-    setCountry(countryData[0]);
-  }
-
-  useEffect(() => {
-    getCountryData();
-  }, []);
+  const country = findCountryByName(countryName);
 
   if (!country)
     return (
@@ -66,7 +59,7 @@ function CountryPage() {
               <CountryDetail title="Languages" value={languages.join(", ")} />
             </DetailsList>
           </Details>
-          <BorderList countries={country.borders} />
+          {country.borders && <BorderList countries={country.borders} />}
         </div>
       </Body>
     </Container>
