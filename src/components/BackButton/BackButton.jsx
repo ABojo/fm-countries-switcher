@@ -6,12 +6,13 @@ const Button = styled.button`
   border: none;
   background-color: ${({ theme }) => theme.colors.elements};
   color: ${({ theme }) => theme.colors.text};
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   font-weight: ${({ theme }) => theme.weights.md};
   display: flex;
   align-items: center;
   cursor: pointer;
   border-radius: ${({ theme }) => theme.br.cards};
+  box-shadow: ${({ theme }) => theme.shadow};
 
   svg {
     margin-right: 0.5rem;
