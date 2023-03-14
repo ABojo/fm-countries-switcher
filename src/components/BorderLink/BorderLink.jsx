@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CountriesContext } from "../../contexts/Countries";
 
 export const StyledLink = styled(Link)`
   background-color: ${({ theme }) => theme.colors.elements};
@@ -11,7 +13,14 @@ export const StyledLink = styled(Link)`
 `;
 
 function BorderLink({ country }) {
-  return <StyledLink to="/country/">{country}</StyledLink>;
+  const { findCountryByAbbreviation } = useContext(CountriesContext);
+  const countryData = findCountryByAbbreviation(country);
+
+  if (!countryData) return null;
+
+  const countryName = countryData.name.common;
+
+  return <StyledLink to={`/country/${countryName}`}>{countryName}</StyledLink>;
 }
 
 export default BorderLink;

@@ -10,7 +10,6 @@ export function CountriesProvider({ children }) {
 
   async function fetchCountries() {
     const countries = await countryApi.getAllCountries();
-
     setCountries(countries);
   }
 
@@ -31,7 +30,21 @@ export function CountriesProvider({ children }) {
     });
   }
 
-  const value = { countries, findCountryByName };
+  function findCountryByAbbreviation(abbreviation) {
+    if (!countries) return null;
+
+    const lowerAbbrev = abbreviation.toLowerCase();
+
+    const countryFound = countries.find((country) => {
+      const currentAbbrev = country.cca3.toLowerCase();
+
+      return lowerAbbrev === currentAbbrev;
+    });
+
+    return countryFound;
+  }
+
+  const value = { countries, findCountryByName, findCountryByAbbreviation };
 
   return (
     <CountriesContext.Provider value={value}>
