@@ -18,4 +18,10 @@ export const ThemeToggle = styled.button`
   font-weight: ${({ theme }) => theme.weights.md};
   background-color: transparent;
   border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: translateY(-0.1rem);
+  }
 `;

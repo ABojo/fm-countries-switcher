@@ -13,6 +13,7 @@ const Button = styled.button`
   cursor: pointer;
   border-radius: ${({ theme }) => theme.br.cards};
   box-shadow: ${({ theme }) => theme.shadow};
+  transition: all 0.2s;
 
   svg {
     margin-right: 0.5rem;

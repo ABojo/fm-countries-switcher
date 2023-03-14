@@ -10,6 +10,12 @@ export const StyledLink = styled(Link)`
   padding: 0.2rem 1rem;
   border-radius: ${({ theme }) => theme.br.cards};
   font-size: 0.8rem;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.elements};
+  }
 `;
 
 function BorderLink({ country }) {
