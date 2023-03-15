@@ -29,6 +29,7 @@ function Theme({ children }) {
   };
 
   let activeTheme = {
+    darkMode,
     toggleTheme,
     bps: {
       lg: "68.75em", //1100 px
