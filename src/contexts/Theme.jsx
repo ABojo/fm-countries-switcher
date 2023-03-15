@@ -13,7 +13,7 @@ function Theme({ children }) {
       elements: "hsl(0, 0%, 100%)",
       bg: "hsl(0, 0%, 98%)",
       text: "hsl(200, 15%, 8%)",
-      input: "hsl(0, 0%, 52%)",
+      input: "hsl(0, 0%, 85%)",
       textHover: "hsl(200, 15%, 50%)",
     },
   };
