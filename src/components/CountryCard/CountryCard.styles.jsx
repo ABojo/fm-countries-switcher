@@ -32,7 +32,12 @@ export const Title = styled(Link)`
   font-size: 1.2rem;
   text-decoration: none;
   color: inherit;
-  display: block;
+  display: inline-block;
+  transition: all 0.2s;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.textHover};
+  }
 `;
 
 export const Data = styled.span`

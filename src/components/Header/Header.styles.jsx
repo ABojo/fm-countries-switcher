@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.header`
   color: ${({ theme }) => theme.colors.text};
@@ -22,6 +23,17 @@ export const Title = styled.h1`
   }
 `;
 
+export const TitleLink = styled(Link)`
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  transition: all 0.2s;
+
+  &:hover {
+    color ${({ theme }) => theme.colors.textHover};
+  }
+`;
+
 export const ThemeToggle = styled.button`
   color: ${({ theme }) => theme.colors.text};
   font-weight: ${({ theme }) => theme.weights.md};
@@ -33,14 +45,18 @@ export const ThemeToggle = styled.button`
   align-items: center;
 
   &:hover {
-    transform: translateY(-0.1rem);
+    color: ${({ theme }) => theme.colors.textHover};
+
+    svg {
+      fill: ${({ theme }) => theme.colors.textHover};
+    }
   }
 
   svg {
     height: 2rem;
     width: 2rem;
-
     fill: ${({ theme }) => theme.colors.text};
+    transition: all 0.2s;
   }
 
   @media (max-width: ${({ theme }) => theme.bps.sm}) {
