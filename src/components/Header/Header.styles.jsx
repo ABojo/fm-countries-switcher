@@ -4,6 +4,7 @@ export const Container = styled.header`
   color: ${({ theme }) => theme.colors.text};
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1.5rem 5rem;
   background-color: ${({ theme }) => theme.colors.elements};
 
@@ -28,9 +29,18 @@ export const ThemeToggle = styled.button`
   border: none;
   cursor: pointer;
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
 
   &:hover {
     transform: translateY(-0.1rem);
+  }
+
+  svg {
+    height: 2rem;
+    width: 2rem;
+
+    fill: ${({ theme }) => theme.colors.text};
   }
 
   @media (max-width: ${({ theme }) => theme.bps.sm}) {

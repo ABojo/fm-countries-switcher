@@ -1,5 +1,6 @@
 import { useTheme } from "styled-components";
 import { Container, Title, ThemeToggle } from "./Header.styles";
+import { ReactComponent as Moon } from "../../assets/moon.svg";
 
 function Header() {
   const { toggleTheme } = useTheme();
@@ -7,7 +8,10 @@ function Header() {
   return (
     <Container>
       <Title>Where in the world?</Title>
-      <ThemeToggle onClick={toggleTheme}>Dark Mode</ThemeToggle>
+      <ThemeToggle onClick={toggleTheme}>
+        <Moon />
+        Dark Mode
+      </ThemeToggle>
     </Container>
   );
 }
