@@ -7,6 +7,12 @@ export const Container = styled.div`
   box-shadow: ${({ theme }) => theme.shadow};
   border-radius: ${({ theme }) => theme.br.cards};
   min-height: 22rem;
+  width: 100%;
+
+  @media (max-width: ${({ theme }) => theme.bps.sm}) {
+    max-width: 18rem;
+    justify-self: center;
+  }
 `;
 
 export const Flag = styled.img`

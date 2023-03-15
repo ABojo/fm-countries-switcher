@@ -8,7 +8,7 @@ export const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.colors.text};
   text-decoration: none;
   padding: 0.2rem 1rem;
-  border-radius: ${({ theme }) => theme.br.cards};
+  border-radius: ${({ theme }) => theme.br.buttons};
   font-size: 0.8rem;
   transition: all 0.2s;
 

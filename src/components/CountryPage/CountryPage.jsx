@@ -51,7 +51,9 @@ function CountryPage() {
               <CountryDetail title="Population" value={country.population} />
               <CountryDetail title="Region" value={country.region} />
               <CountryDetail title="Sub Region" value={country.subregion} />
-              <CountryDetail title="Capital" value={country.capital[0]} />
+              {country.capital && (
+                <CountryDetail title="Capital" value={country.capital[0]} />
+              )}
             </DetailsList>
             <DetailsList>
               <CountryDetail title="Top Level Domain" value={country.tld[0]} />

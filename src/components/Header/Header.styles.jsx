@@ -6,11 +6,19 @@ export const Container = styled.header`
   justify-content: space-between;
   padding: 1.5rem 5rem;
   background-color: ${({ theme }) => theme.colors.elements};
+
+  @media (max-width: ${({ theme }) => theme.bps.lg}) {
+    padding: 1.5rem 2rem;
+  }
 `;
 
 export const Title = styled.h1`
   font-weight: ${({ theme }) => theme.weights.lg};
   font-size: 1.5rem;
+
+  @media (max-width: ${({ theme }) => theme.bps.sm}) {
+    font-size: 1rem;
+  }
 `;
 
 export const ThemeToggle = styled.button`
@@ -23,5 +31,9 @@ export const ThemeToggle = styled.button`
 
   &:hover {
     transform: translateY(-0.1rem);
+  }
+
+  @media (max-width: ${({ theme }) => theme.bps.sm}) {
+    font-size: 0.9rem;
   }
 `;

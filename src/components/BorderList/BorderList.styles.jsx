@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  & *:not(:last-child) {
-    margin-right: 0.5rem;
-  }
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 `;
 
 export const Title = styled.span`

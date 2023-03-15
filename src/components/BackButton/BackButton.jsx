@@ -11,7 +11,7 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   cursor: pointer;
-  border-radius: ${({ theme }) => theme.br.cards};
+  border-radius: ${({ theme }) => theme.br.buttons};
   box-shadow: ${({ theme }) => theme.shadow};
   transition: all 0.2s;
 

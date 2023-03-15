@@ -28,6 +28,11 @@ function Theme({ children }) {
 
   let activeTheme = {
     toggleTheme,
+    bps: {
+      lg: "68.75em", //1100 px
+      md: "50em", //800px
+      sm: "32em", //512px
+    },
     weights: {
       sm: 300,
       md: 600,
@@ -35,6 +40,7 @@ function Theme({ children }) {
     },
     br: {
       cards: ".5rem",
+      buttons: ".1rem",
     },
     shadow: "10px 10px 30px -32px rgba(0, 0, 0, 0.75);",
   };
