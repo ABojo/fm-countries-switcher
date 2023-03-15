@@ -1,5 +1,6 @@
-import { Title, Container } from "./BorderList.styles";
+import { Title, Container, LinkContainer } from "./BorderList.styles";
 import BorderLink from "../BorderLink/BorderLink";
+import { Link } from "react-router-dom";
 
 function BorderList({ countries }) {
   const linkElements = countries.map((country) => {
@@ -13,7 +14,7 @@ function BorderList({ countries }) {
   return (
     <Container>
       <Title>Border Countries:</Title>
-      {linkElements}
+      <LinkContainer>{linkElements}</LinkContainer>
     </Container>
   );
 }
