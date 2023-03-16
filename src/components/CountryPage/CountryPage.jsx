@@ -56,7 +56,12 @@ function CountryPage() {
               )}
             </DetailsList>
             <DetailsList>
-              <CountryDetail title="Top Level Domain" value={country.tld[0]} />
+              {country.tld && (
+                <CountryDetail
+                  title="Top Level Domain"
+                  value={country.tld[0]}
+                />
+              )}
               <CountryDetail title="Currencies" value={currencies.join(", ")} />
               <CountryDetail title="Languages" value={languages.join(", ")} />
             </DetailsList>

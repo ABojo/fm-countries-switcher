@@ -33,6 +33,7 @@ export const Body = styled.main`
 
 export const Flag = styled.img`
   width: 100%;
+  max-height: 35rem;
 `;
 
 export const Name = styled.h1`
