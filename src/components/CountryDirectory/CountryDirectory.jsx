@@ -15,14 +15,12 @@ function CountryDirectory() {
         <FilterSearch />
         <FilterRegion />
       </FilterControls>
+      {!countries && <Spinner />}
       <Grid>
-        {countries ? (
+        {countries &&
           countries.map((country) => {
             return <CountryCard country={country} key={country.name.common} />;
-          })
-        ) : (
-          <Spinner />
-        )}
+          })}
       </Grid>
     </Container>
   );
