@@ -1,14 +1,28 @@
 import styled from "styled-components";
 
 export const Container = styled.main`
+  min-height: 100dvh;
   background-color: ${({ theme }) => theme.colors.bg};
-  padding: 2rem 5rem;
+  padding: 3rem 5rem;
+
+  @media (max-width: ${({ theme }) => theme.bps.lg}) {
+    padding: 2rem 2rem;
+  }
+`;
+
+export const FilterControls = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-bottom: 3rem;
+`;
+
+export const Grid = styled.div`
   display: grid;
   grid-gap: 5rem;
-  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
 
   @media (max-width: ${({ theme }) => theme.bps.lg}) {
     grid-gap: 2rem;
-    padding: 2rem 2rem;
   }
 `;
