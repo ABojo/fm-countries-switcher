@@ -11,11 +11,23 @@ export function CountriesProvider({ children }) {
   const [filterName, setFilterName] = useState("");
   const [filterRegion, setFilterRegion] = useState("");
 
+  //sorts the countries by name
+  function sortCountries(countries) {
+    return countries.sort((a, b) => {
+      const aName = a.name.common;
+      const bName = b.name.common;
+
+      return aName > bName ? 1 : -1;
+    });
+  }
+
   //pulls countries from the API
-  async function fetchCountries() {
+  async function loadCountries() {
     const countries = await countryApi.getAllCountries();
-    setAllCountries(countries);
-    setCountries(countries);
+    const sortedCountries = sortCountries(countries);
+
+    setAllCountries(sortedCountries);
+    setCountries(sortedCountries);
   }
 
   //returns true if the country should be included based on name
@@ -49,7 +61,7 @@ export function CountriesProvider({ children }) {
 
   //fetches countries on mount
   useEffect(() => {
-    fetchCountries();
+    loadCountries();
   }, []);
 
   //if the countries array exists then filter the array everytime the filter string or region change
