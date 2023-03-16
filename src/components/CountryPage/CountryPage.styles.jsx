@@ -41,30 +41,3 @@ export const Name = styled.h1`
   font-size: 2rem;
   margin-bottom: 2rem;
 `;
-
-export const Details = styled.ul`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 3rem;
-  margin-bottom: 5rem;
-
-  @media (max-width: ${({ theme }) => theme.bps.sm}) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-export const DetailsList = styled.ul`
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-
-  & *:not(:last-child) {
-    margin-bottom: 0.75rem;
-  }
-
-  @media (max-width: ${({ theme }) => theme.bps.sm}) {
-    &:not(:last-child) {
-      margin-bottom: 2rem;
-    }
-  }
-`;
