@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import countryApi from "../utils/countryApi";
+import storage from "../utils/storage";
 
 export const CountriesContext = createContext({
   countries: null,
@@ -25,13 +26,22 @@ export function CountriesProvider({ children }) {
     setFilterName("");
   }
 
-  //pulls countries from the API
+  function setCountryState(countries) {
+    setAllCountries(countries);
+    setCountries(countries);
+  }
+
+  //pulls countries from local storage. if they're not there then pull them from the api, sort, and store them
   async function loadCountries() {
+    const savedCountries = storage.getCountries();
+
+    if (savedCountries) return setCountryState(savedCountries);
+
     const countries = await countryApi.getAllCountries();
     const sortedCountries = sortCountries(countries);
 
-    setAllCountries(sortedCountries);
-    setCountries(sortedCountries);
+    storage.saveCountries(sortedCountries);
+    setCountryState(sortedCountries);
   }
 
   //returns true if the country should be included based on name
