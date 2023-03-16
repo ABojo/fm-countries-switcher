@@ -15,6 +15,12 @@ export const FilterControls = styled.div`
   justify-content: space-between;
   align-items: stretch;
   margin-bottom: 3rem;
+
+  @media (max-width: ${({ theme }) => theme.bps.md}) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+  }
 `;
 
 export const Grid = styled.div`
