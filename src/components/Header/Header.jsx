@@ -12,8 +12,15 @@ function Header() {
         <TitleLink to="/">Where in the world?</TitleLink>
       </Title>
       <ThemeToggle onClick={toggleTheme}>
-        {darkMode ? <FullMoon /> : <Moon />}
-        Dark Mode
+        {darkMode ? (
+          <>
+            <Moon /> Light Mode
+          </>
+        ) : (
+          <>
+            <FullMoon /> Dark Mode
+          </>
+        )}
       </ThemeToggle>
     </Container>
   );
