@@ -21,6 +21,10 @@ export function CountriesProvider({ children }) {
     });
   }
 
+  function clearFilterName() {
+    setFilterName("");
+  }
+
   //pulls countries from the API
   async function loadCountries() {
     const countries = await countryApi.getAllCountries();
@@ -59,16 +63,6 @@ export function CountriesProvider({ children }) {
     setCountries(filteredCountries);
   }
 
-  //fetches countries on mount
-  useEffect(() => {
-    loadCountries();
-  }, []);
-
-  //if the countries array exists then filter the array everytime the filter string or region change
-  useEffect(() => {
-    if (countries) filterCountries();
-  }, [filterName, filterRegion]);
-
   function findCountryByName(name) {
     if (!countries) return null;
 
@@ -96,11 +90,22 @@ export function CountriesProvider({ children }) {
     return countryFound;
   }
 
+  //fetches countries on mount
+  useEffect(() => {
+    loadCountries();
+  }, []);
+
+  //if the countries array exists then filter the array everytime the filter string or region change
+  useEffect(() => {
+    if (countries) filterCountries();
+  }, [filterName, filterRegion]);
+
   const value = {
     countries,
     filterName,
     filterRegion,
     setFilterName,
+    clearFilterName,
     setFilterRegion,
     findCountryByName,
     findCountryByAbbreviation,

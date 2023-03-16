@@ -17,6 +17,22 @@ export const Container = styled.div`
   }
 `;
 
+export const ClearButton = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 1.5rem;
+  background-color: transparent;
+  border: none;
+  color: ${({ theme }) => theme.colors.text};
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.textHover};
+  }
+`;
+
 export const Input = styled.input`
   padding: 1.25rem;
   padding-left: 4rem;
