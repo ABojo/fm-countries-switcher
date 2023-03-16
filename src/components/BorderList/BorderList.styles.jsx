@@ -9,7 +9,11 @@ export const Container = styled.div`
 export const LinkContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  margin-top: -0.5rem;
+  & * {
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+  }
 `;
 
 export const Title = styled.span`

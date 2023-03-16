@@ -21,15 +21,22 @@ export const Container = styled.button`
     width: 1.5rem;
     fill: ${({ theme }) => theme.colors.text};
   }
+
+  @media (max-width: ${({ theme }) => theme.bps.md}) {
+    margin-top: 2rem;
+  }
 `;
 
 export const Text = styled.span``;
 
-export const Option = styled.option`
+export const Option = styled.button`
   cursor: pointer;
   transition: all 0.2s;
   pointer-events: auto;
-
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: inherit;
   &:hover {
     color: ${({ theme }) => theme.colors.textHover};
   }
