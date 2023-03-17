@@ -7,6 +7,7 @@ import Spinner from "../Spinner/Spinner";
 import BackButton from "../BackButton/BackButton";
 import BorderList from "../BorderList/BorderList";
 import CountryDetails from "../CountryDetails/CountryDetails";
+import Message from "../Message/Message";
 
 function CountryPage() {
   const { findCountryByName } = useContext(CountriesContext);
@@ -15,6 +16,10 @@ function CountryPage() {
   const country = findCountryByName(countryName);
 
   if (!country) return <Spinner />;
+
+  if (country.error) {
+    return <Message>Sorry, that country could not be found!</Message>;
+  }
 
   return (
     <>

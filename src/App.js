@@ -3,27 +3,9 @@ import { CountriesProvider } from "./contexts/Countries";
 import Header from "./components/Header/Header";
 import CountryDirectory from "./components/CountryDirectory/CountryDirectory";
 import CountryPage from "./components/CountryPage/CountryPage";
-import NotFound from "./components/NotFound/NotFound";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
-
-function AppOld() {
-  return (
-    <BrowserRouter>
-      <Theme>
-        <CountriesProvider>
-          <Header />
-          <Routes>
-            <Route index element={<CountryDirectory />} />
-            <Route index element={<div></div>}></Route>
-            <Route path="/country/:countryName" element={<CountryPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </CountriesProvider>
-      </Theme>
-    </BrowserRouter>
-  );
-}
+import Message from "./components/Message/Message";
 
 function App() {
   return (
@@ -34,7 +16,12 @@ function App() {
             <Route path="/" element={<Home />}>
               <Route index element={<CountryDirectory />} />
               <Route path="country/:countryName" element={<CountryPage />} />
-              <Route path="*" element={<NotFound />} />
+              <Route
+                path="*"
+                element={
+                  <Message>Sorry, that page could not be found!</Message>
+                }
+              />
             </Route>
           </Routes>
         </CountriesProvider>

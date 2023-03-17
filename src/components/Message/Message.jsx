@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Message = styled.h1`
+const Element = styled.h1`
   font-size: 2rem;
   text-align: center;
   display: block;
@@ -8,8 +8,8 @@ const Message = styled.h1`
   color: ${({ theme }) => theme.colors.text};
 `;
 
-function NotFound() {
-  return <Message>Sorry, that page was not found!</Message>;
+function Message({ children }) {
+  return <Element>{children}</Element>;
 }
 
-export default NotFound;
+export default Message;

@@ -74,24 +74,26 @@ export function CountriesProvider({ children }) {
   }
 
   function findCountryByName(name) {
-    if (!countries) return null;
+    if (!allCountries) return null;
 
     const lowerName = name.toLowerCase();
 
-    return countries.find((country) => {
+    const country = allCountries.find((country) => {
       const common = country.name.common.toLowerCase();
       const official = country.name.official.toLowerCase();
 
       return common === lowerName || official === lowerName;
     });
+
+    return country || { error: true };
   }
 
   function findCountryByAbbreviation(abbreviation) {
-    if (!countries) return null;
+    if (!allCountries) return null;
 
     const lowerAbbrev = abbreviation.toLowerCase();
 
-    const countryFound = countries.find((country) => {
+    const countryFound = allCountries.find((country) => {
       const currentAbbrev = country.cca3.toLowerCase();
 
       return lowerAbbrev === currentAbbrev;
