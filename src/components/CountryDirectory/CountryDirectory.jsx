@@ -1,12 +1,7 @@
 import { useContext } from "react";
-import {
-  Container,
-  FilterControls,
-  Grid,
-  ErrorMessage,
-} from "./CountryDirectory.styles";
-
 import { CountriesContext } from "../../contexts/Countries";
+
+import { FilterControls, Grid, ErrorMessage } from "./CountryDirectory.styles";
 import CountryCard from "../CountryCard/CountryCard";
 import Spinner from "../Spinner/Spinner";
 import FilterSearch from "../FilterSearch/FilterSearch";
@@ -16,15 +11,11 @@ function CountryDirectory() {
   const { countries } = useContext(CountriesContext);
 
   if (!countries) {
-    return (
-      <Container>
-        <Spinner />
-      </Container>
-    );
+    return <Spinner />;
   }
 
   return (
-    <Container>
+    <>
       <FilterControls>
         <FilterSearch />
         <FilterRegion />
@@ -38,7 +29,7 @@ function CountryDirectory() {
             return <CountryCard country={country} key={country.name.common} />;
           })}
       </Grid>
-    </Container>
+    </>
   );
 }
 

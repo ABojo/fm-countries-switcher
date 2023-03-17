@@ -1,16 +1,5 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  background-color: ${({ theme }) => theme.colors.bg};
-  padding: 5rem;
-  min-height: 100vh;
-  color: ${({ theme }) => theme.colors.text};
-
-  @media (max-width: ${({ theme }) => theme.bps.lg}) {
-    padding: 5rem 2rem;
-  }
-`;
-
 export const Body = styled.main`
   display: grid;
   grid-gap: 10rem;
