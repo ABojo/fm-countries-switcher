@@ -3,6 +3,7 @@ import styled from "styled-components";
 const Container = styled.main`
   min-height: 100dvh;
   background-color: ${({ theme }) => theme.colors.bg};
+  color: ${({ theme }) => theme.colors.text};
   padding: 3rem 5rem;
 
   @media (max-width: ${({ theme }) => theme.bps.lg}) {
