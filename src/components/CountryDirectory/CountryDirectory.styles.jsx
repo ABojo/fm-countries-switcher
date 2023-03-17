@@ -31,3 +31,12 @@ export const Grid = styled.div`
     grid-gap: 2rem;
   }
 `;
+
+export const ErrorMessage = styled.span`
+  font-size: 2rem;
+  text-align: center;
+  display: block;
+  font-weight: ${({ theme }) => theme.weights.lg};
+  color: ${({ theme }) => theme.colors.text};
+  grid-column: 1 / -1;
+`;
