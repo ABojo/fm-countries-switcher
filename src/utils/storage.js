@@ -10,6 +10,16 @@ const storage = {
     const stringified = JSON.stringify(countries);
     localStorage.setItem("countries", stringified);
   },
+  getTheme: function () {
+    const theme = localStorage.getItem("theme");
+
+    if (!theme) return null;
+
+    return theme;
+  },
+  saveTheme: function (theme) {
+    localStorage.setItem("theme", theme);
+  },
 };
 
 export default storage;

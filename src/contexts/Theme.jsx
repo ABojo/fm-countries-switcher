@@ -1,11 +1,13 @@
 import { ThemeProvider } from "styled-components";
 import { useState } from "react";
+import storage from "../utils/storage";
 
 function Theme({ children }) {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(storage.getTheme() === "dark");
 
   function toggleTheme() {
     setDarkMode((darkMode) => !darkMode);
+    storage.saveTheme(!darkMode ? "dark" : "light");
   }
 
   const lightTheme = {
