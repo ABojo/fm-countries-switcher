@@ -20,7 +20,7 @@ function CountryCard({ country }) {
       <Body>
         <Title to={countryUrl}>{name}</Title>
         <Data>
-          <DataName>Population:</DataName> {population}
+          <DataName>Population:</DataName> {population.toLocaleString()}
         </Data>
         <Data>
           <DataName>Region:</DataName> {region}

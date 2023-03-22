@@ -22,7 +22,10 @@ function CountryDetails({ country }) {
     <Container>
       <List>
         <Detail title="Native Name" value={country.name.common} />
-        <Detail title="Population" value={country.population} />
+        <Detail
+          title="Population"
+          value={country.population.toLocaleString()}
+        />
         <Detail title="Region" value={country.region} />
         <Detail title="Sub Region" value={country.subregion} />
         {country.capital && (
