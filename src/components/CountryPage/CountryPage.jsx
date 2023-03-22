@@ -11,12 +11,27 @@ import Message from "../Message/Message";
 import APIError from "../APIError/APIError";
 
 function CountryPage() {
-  const { apiError, findCountryByName } = useContext(CountriesContext);
+  const { countries, apiError } = useContext(CountriesContext);
   const { countryName } = useParams();
 
   if (apiError) return <APIError />;
 
-  const country = findCountryByName(countryName);
+  function findCountryByName() {
+    if (!countries) return null;
+
+    const lowerName = countryName.toLowerCase();
+
+    const country = countries.find((country) => {
+      const common = country.name.common.toLowerCase();
+      const official = country.name.official.toLowerCase();
+
+      return common === lowerName || official === lowerName;
+    });
+
+    return country || { error: true };
+  }
+
+  const country = findCountryByName();
 
   if (!country) return <Spinner />;
 

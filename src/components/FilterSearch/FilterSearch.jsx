@@ -1,11 +1,11 @@
+import { useContext } from "react";
+import { FilterContext } from "../../contexts/Filter";
 import { Input, Container, ClearButton } from "./FilterSearch.styles";
 import { ReactComponent as SearchIcon } from "../../assets/search.svg";
-import { useContext } from "react";
-import { CountriesContext } from "../../contexts/Countries";
 
 function FilterSearch() {
-  const { setFilterName, filterName, clearFilterName } =
-    useContext(CountriesContext);
+  const { filterName, setFilterName, clearFilterName } =
+    useContext(FilterContext);
 
   function handleChange(e) {
     setFilterName(e.target.value);

@@ -19,7 +19,22 @@ export const StyledLink = styled(Link)`
 `;
 
 function BorderLink({ country }) {
-  const { findCountryByAbbreviation } = useContext(CountriesContext);
+  const { countries } = useContext(CountriesContext);
+
+  function findCountryByAbbreviation() {
+    if (!countries) return null;
+
+    const lowerAbbrev = country.toLowerCase();
+
+    const countryFound = countries.find((country) => {
+      const currentAbbrev = country.cca3.toLowerCase();
+
+      return lowerAbbrev === currentAbbrev;
+    });
+
+    return countryFound;
+  }
+
   const countryData = findCountryByAbbreviation(country);
 
   if (!countryData) return null;

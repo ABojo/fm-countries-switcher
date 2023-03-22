@@ -1,20 +1,18 @@
-import { useContext, useState } from "react";
-import { CountriesContext } from "../../contexts/Countries";
+import { useState, useContext } from "react";
+import { FilterContext } from "../../contexts/Filter";
 import { Container, Text, Option, Dropdown } from "./FilterRegion.styles";
 import { ReactComponent as DownArrow } from "../../assets/down-arrow.svg";
 import { ReactComponent as UpArrow } from "../../assets/up-arrow.svg";
 
 function FilterRegion() {
+  const { filterRegion, setFilterRegion } = useContext(FilterContext);
   const [isOpen, setIsOpen] = useState(false);
-  const { setFilterRegion, filterRegion } = useContext(CountriesContext);
 
   function toggleDropdown() {
     setIsOpen((isOpen) => !isOpen);
   }
 
   function changeRegion(e) {
-    console.log(e.target);
-
     const dataValue = e.target.getAttribute("data-value");
     setFilterRegion(dataValue);
   }
