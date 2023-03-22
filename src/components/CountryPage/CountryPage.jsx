@@ -43,7 +43,7 @@ function CountryPage() {
     <>
       <BackButton />
       <Body>
-        <Flag src={country.flags.svg} />
+        <Flag src={country.flags.svg} alt={country.name.common} />
         <div>
           <Name>{country.name.common}</Name>
           <CountryDetails country={country} />

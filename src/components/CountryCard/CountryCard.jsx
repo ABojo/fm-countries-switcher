@@ -16,7 +16,7 @@ function CountryCard({ country }) {
 
   return (
     <Container>
-      <Flag src={flagUrl}></Flag>
+      <Flag src={flagUrl} alt={name}></Flag>
       <Body>
         <Title to={countryUrl}>{name}</Title>
         <Data>
