@@ -8,10 +8,13 @@ import BackButton from "../BackButton/BackButton";
 import BorderList from "../BorderList/BorderList";
 import CountryDetails from "../CountryDetails/CountryDetails";
 import Message from "../Message/Message";
+import APIError from "../APIError/APIError";
 
 function CountryPage() {
-  const { findCountryByName } = useContext(CountriesContext);
+  const { apiError, findCountryByName } = useContext(CountriesContext);
   const { countryName } = useParams();
+
+  if (apiError) return <APIError />;
 
   const country = findCountryByName(countryName);
 

@@ -7,13 +7,14 @@ import Spinner from "../Spinner/Spinner";
 import FilterSearch from "../FilterSearch/FilterSearch";
 import FilterRegion from "../FilterRegion/FilterRegion";
 import Message from "../Message/Message";
+import APIError from "../APIError/APIError";
 
 function CountryDirectory() {
-  const { countries } = useContext(CountriesContext);
+  const { countries, apiError } = useContext(CountriesContext);
 
-  if (!countries) {
-    return <Spinner />;
-  }
+  if (apiError) return <APIError />;
+
+  if (!countries) return <Spinner />;
 
   return (
     <>

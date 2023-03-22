@@ -7,6 +7,8 @@ export const CountriesContext = createContext({
 });
 
 export function CountriesProvider({ children }) {
+  const [apiError, setApiError] = useState(false);
+
   const [allCountries, setAllCountries] = useState(null);
   const [countries, setCountries] = useState(null);
   const [filterName, setFilterName] = useState("");
@@ -37,11 +39,16 @@ export function CountriesProvider({ children }) {
 
     if (savedCountries) return setCountryState(savedCountries);
 
-    const countries = await countryApi.getAllCountries();
-    const sortedCountries = sortCountries(countries);
+    try {
+      setApiError(false);
+      const countries = await countryApi.getAllCountries();
+      const sortedCountries = sortCountries(countries);
 
-    storage.saveCountries(sortedCountries);
-    setCountryState(sortedCountries);
+      storage.saveCountries(sortedCountries);
+      setCountryState(sortedCountries);
+    } catch (err) {
+      setApiError(true);
+    }
   }
 
   //returns true if the country should be included based on name
@@ -113,9 +120,11 @@ export function CountriesProvider({ children }) {
   }, [filterName, filterRegion]);
 
   const value = {
+    apiError,
     countries,
     filterName,
     filterRegion,
+    loadCountries,
     setFilterName,
     clearFilterName,
     setFilterRegion,
