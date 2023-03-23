@@ -61,7 +61,7 @@ function CountryDirectory() {
   //handle error/loading states
   if (apiError) return <APIError />;
 
-  if (!countries) return <Spinner />;
+  if (!countries.length) return <Spinner />;
 
   return (
     <>
