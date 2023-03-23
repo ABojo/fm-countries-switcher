@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CountriesContext } from "../../contexts/Countries";
 import { FilterContext } from "../../contexts/Filter";
 
@@ -9,16 +9,15 @@ import FilterSearch from "../FilterSearch/FilterSearch";
 import FilterRegion from "../FilterRegion/FilterRegion";
 import Message from "../Message/Message";
 import APIError from "../APIError/APIError";
+import Pagination from "../Pagination/Pagination";
 
 function CountryDirectory() {
   const { countries, apiError } = useContext(CountriesContext);
   const { filterName, filterRegion } = useContext(FilterContext);
 
-  if (apiError) return <APIError />;
+  const [pageNumber, setPageNumber] = useState(1);
+  const [resultsPerPage, setResultsPerPage] = useState(8);
 
-  if (!countries) return <Spinner />;
-
-  //filter countries according to current filtering rules
   //returns true if the country should be included based on name
   function nameIsValid(country) {
     if (!filterName) return true;
@@ -36,7 +35,7 @@ function CountryDirectory() {
     return country.region.includes(filterRegion);
   }
 
-  //filters out countries that dont pass the name and region check
+  //filter countries based on current name and region
   const filteredCountries = countries.filter((country) => {
     const validName = nameIsValid(country);
     const validRegion = regionIsValid(country);
@@ -44,21 +43,48 @@ function CountryDirectory() {
     return validName && validRegion;
   });
 
+  const numberOfPages = Math.ceil(filteredCountries.length / resultsPerPage);
+
+  //the countries that should be shown on the current page based on the current filters
+  const currentPageCountries = filteredCountries.slice(
+    pageNumber * resultsPerPage - resultsPerPage,
+    pageNumber * resultsPerPage
+  );
+
+  //reset page number when filter parameters change
+  useEffect(() => {
+    setPageNumber(1);
+  }, [filterName, filterRegion]);
+
+  //handle error/loading states
+  if (apiError) return <APIError />;
+
+  if (!countries) return <Spinner />;
+
   return (
     <>
       <FilterControls>
         <FilterSearch />
         <FilterRegion />
       </FilterControls>
-      {!filteredCountries.length && (
+      {!filteredCountries.length ? (
         <Message>Sorry, no countries found!</Message>
+      ) : (
+        <>
+          <Grid>
+            {currentPageCountries.map((country) => {
+              return (
+                <CountryCard country={country} key={country.name.common} />
+              );
+            })}
+          </Grid>
+          <Pagination
+            pageNumber={pageNumber}
+            setPageNumber={setPageNumber}
+            numberOfPages={numberOfPages}
+          />
+        </>
       )}
-      <Grid>
-        {filteredCountries.length > 0 &&
-          filteredCountries.map((country) => {
-            return <CountryCard country={country} key={country.name.common} />;
-          })}
-      </Grid>
     </>
   );
 }
