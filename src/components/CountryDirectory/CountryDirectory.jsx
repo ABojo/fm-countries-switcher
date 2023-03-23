@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useMemo } from "react";
 import { CountriesContext } from "../../contexts/Countries";
 import { FilterContext } from "../../contexts/Filter";
 
@@ -36,12 +36,14 @@ function CountryDirectory() {
   }
 
   //filter countries based on current name and region
-  const filteredCountries = countries.filter((country) => {
-    const validName = nameIsValid(country);
-    const validRegion = regionIsValid(country);
+  const filteredCountries = useMemo(() => {
+    return countries.filter((country) => {
+      const validName = nameIsValid(country);
+      const validRegion = regionIsValid(country);
 
-    return validName && validRegion;
-  });
+      return validName && validRegion;
+    });
+  }, [countries, filterName, filterRegion]);
 
   const numberOfPages = Math.ceil(filteredCountries.length / resultsPerPage);
 

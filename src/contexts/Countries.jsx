@@ -3,12 +3,12 @@ import countryApi from "../utils/countryApi";
 import storage from "../utils/storage";
 
 export const CountriesContext = createContext({
-  countries: null,
+  countries: [],
 });
 
 export function CountriesProvider({ children }) {
   const [apiError, setApiError] = useState(false);
-  const [countries, setCountries] = useState(null);
+  const [countries, setCountries] = useState([]);
 
   //sorts the countries by name
   function sortCountries(countries) {

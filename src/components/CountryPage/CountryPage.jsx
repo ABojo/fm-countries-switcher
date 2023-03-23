@@ -17,7 +17,7 @@ function CountryPage() {
   if (apiError) return <APIError />;
 
   function findCountryByName() {
-    if (!countries) return null;
+    if (!countries.length) return null;
 
     const lowerName = countryName.toLowerCase();
 
