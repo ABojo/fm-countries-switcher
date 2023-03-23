@@ -16,7 +16,7 @@ function CountryDirectory() {
   const { filterName, filterRegion } = useContext(FilterContext);
 
   const [pageNumber, setPageNumber] = useState(1);
-  const [resultsPerPage, setResultsPerPage] = useState(8);
+  const [resultsPerPage, setResultsPerPage] = useState(12);
 
   //returns true if the country should be included based on name
   function nameIsValid(country) {
