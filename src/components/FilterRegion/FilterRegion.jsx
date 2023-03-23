@@ -18,11 +18,13 @@ function FilterRegion() {
   }
 
   return (
-    <Container onClick={toggleDropdown}>
+    <Container onClick={toggleDropdown} role="button">
       <Text>{filterRegion || "Filter by Region"}</Text>
       {isOpen ? <UpArrow /> : <DownArrow />}
       <Dropdown onClick={changeRegion} isOpen={isOpen}>
-        <Option data-value="">All</Option>
+        <Option role="button" data-value="">
+          All
+        </Option>
         <Option data-value="Africa">Africa</Option>
         <Option data-value="America">America</Option>
         <Option data-value="Asia">Asia</Option>

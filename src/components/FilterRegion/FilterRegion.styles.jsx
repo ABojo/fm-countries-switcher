@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.button`
+export const Container = styled.span`
   position: relative;
   color: ${({ theme }) => theme.colors.text};
   background-color: ${({ theme }) => theme.colors.input};
