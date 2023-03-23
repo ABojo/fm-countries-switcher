@@ -30,7 +30,13 @@ function BackButton() {
   const navigate = useNavigate();
 
   function navigateBack() {
-    navigate(-1);
+    const hasHistory = window.history.state.idx;
+
+    if (hasHistory) {
+      navigate(-1);
+    } else {
+      navigate("/");
+    }
   }
 
   return (
